@@ -1,0 +1,84 @@
+<!-- NÃO coloque <nav>, <header>, <footer>, <main>, <html>, <body> aqui! -->
+<section style="text-align:center; margin: 2rem auto; max-width: 700px; width: 100%;">
+    <div style="position:relative;display:flex;flex-direction:column;align-items:center;">
+        <img src="imagens/cloud-147615_1280.png" alt="Nuvem fofa"
+            style="width:400px;max-width:100%;border-radius:18px;box-shadow:0 2px 12px #B3B66F;">
+        <div id="semanas-gestacao"
+            style="position:absolute;bottom:10px;right:10px;background:#B3B66F;color:#fff;padding:0.7rem 1.2rem;border-radius:10px;font-size:1.1rem;font-weight:bold;box-shadow:0 2px 8px #E5B06E;">
+            Mamãe está de<br><span id="num-semanas" style="font-size:2.2rem;color:#fff;">14</span><br>semanas
+        </div>
+    </div>
+    <div style="margin:1.5rem 0;">
+        <strong style="font-size:1.2rem; color:#A2BA8A; text-shadow: 1px 1px 2px #222;">É tempo de alegria!</strong>
+        <p style="
+            margin:0.7rem 0 0 0;
+            color:#A2BA8A;
+            font-size:1.25rem;
+            line-height:1.7;
+            text-shadow:
+                1px 1px 2px #222,
+                0 1px 6px #fff,
+                0 1px 2px #B3B66F22;
+            font-weight:500;
+            letter-spacing:0.01em;
+            ">
+            É com enorme alegria que convidamos você para o nosso Chá de Bebê!<br>
+            Venha celebrar conosco este momento tão especial. Teremos muita diversão, sorrisos e carinho para
+            compartilhar.<br>
+            Para presentear, acesse a nossa lista de presentes e escolha o que preferir.<br>
+            Cada mimo será recebido com muito amor!<br>
+            Deixe sua mensagem no nosso mural e faça parte dessa lembrança.
+        </p>
+    </div>
+    <div
+        style="background:#fff;border:1px solid #A2BA8A;border-radius:10px;padding:1.2rem;max-width:500px;width:100%;margin:2rem auto 0 auto;box-shadow:0 2px 8px #B3B66F;text-align:left;box-sizing:border-box;overflow-x:auto;">
+        <strong style="color:#A2BA8A;font-size:1.1rem;">Evento</strong>
+        <div style="margin:0.7rem 0 0.2rem 0;">
+            <span style="color:#907F47;font-weight:600;">Chá de Fralda em 07/06/25 às 16 horas</span>
+        </div>
+        <div style="color:#8D9F6F; font-size:0.98rem; margin-bottom:1rem;word-break:break-word;">
+            <span style="display:inline-block;margin-right:0.5rem;">📍</span>
+            Rua Alberto Fiuza, 571 (CEP 41720-025)<br>
+            Cond. Moradas do Bosque<br>
+            Edif. Álamo (Salão de Festas / Térreo)<br>
+            Imbuí - Salvador, BA
+        </div>
+        <div style="margin-top:1rem;display:flex;flex-wrap:wrap;gap:0.7rem;">
+            <a href="#"
+                onclick="window.parent.carregarPagina && window.parent.carregarPagina('confirmar.html'); return false;"
+                style="display:inline-block; background:#B3B66F; color:#fff; padding:0.5rem 1.2rem; border-radius:5px; text-decoration:none; font-weight:600;">CONFIRMAR
+                PRESENÇA</a>
+            <a href="#"
+                onclick="window.parent.carregarPagina && window.parent.carregarPagina('fraldas.html'); return false;"
+                style="display:inline-block; background:#A2BA8A; color:#fff; padding:0.5rem 1.2rem; border-radius:5px; text-decoration:none;font-weight:600;">PRESENTEAR</a>
+        </div>
+    </div>
+</section>
+<script>
+    // filepath: c:\Users\F07614058526\Downloads\Cha de Bebe\home.html
+    // Corrigido: contador de semanas de gestação real
+    (function () {
+        const semanasInicio = 14;
+        const maxSemanas = 40;
+        const dataEvento = new Date(2025, 5, 7); // 07/06/2025 (mês começa do zero)
+        // Defina aqui a data em que a mamãe completou 14 semanas (exemplo: hoje)
+        const data14Semanas = new Date(); // <-- coloque aqui a data correta se não for hoje
+        data14Semanas.setHours(0, 0, 0, 0); // zera horas para evitar bugs
+
+        const hoje = new Date();
+        hoje.setHours(0, 0, 0, 0);
+
+        // Se quiser fixar uma data, por exemplo, se hoje é 15/05/2024 e ela está com 14 semanas:
+        // const data14Semanas = new Date(2024, 4, 15); // 15/05/2024
+
+        let semanas = semanasInicio;
+        if (hoje > data14Semanas) {
+            const diffMs = hoje - data14Semanas;
+            const semanasPassadas = Math.floor(diffMs / (1000 * 60 * 60 * 24 * 7));
+            semanas = semanasInicio + semanasPassadas;
+        }
+        if (hoje > dataEvento) semanas = maxSemanas;
+        semanas = Math.max(semanasInicio, Math.min(maxSemanas, semanas));
+        document.getElementById('num-semanas').textContent = semanas;
+    })();
+</script>

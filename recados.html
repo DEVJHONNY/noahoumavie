@@ -1,0 +1,55 @@
+<section class="recados-section" id="recados" style="width:100%;max-width:700px;margin:2rem auto;">
+    <h3 style="color:#A2BA8A;">Mural de Recados</h3>
+    <form id="form-recado" style="margin-bottom:2rem;display:flex;flex-wrap:wrap;justify-content:center;gap:0.7rem;">
+        <input type="text" id="autor-recado" placeholder="Seu nome" maxlength="30" required
+            style="padding:0.5rem 1rem;border-radius:6px;border:1px solid #8D9F6F;width:180px;min-width:120px;max-width:100%;margin-right:0;">
+        <input type="text" id="texto-recado" placeholder="Deixe seu recado" maxlength="120" required
+            style="padding:0.5rem 1rem;border-radius:6px;border:1px solid #8D9F6F;width:320px;max-width:100%;">
+        <button type="submit"
+            style="background:#B3B66F;color:#fff;padding:0.5rem 1.2rem;border:none;border-radius:6px;font-weight:700;cursor:pointer;">Enviar</button>
+    </form>
+    <div class="recados-list" id="lista-recados">
+        <!-- Recados serão carregados aqui -->
+    </div>
+</section>
+<script>
+    setTimeout(function () {
+        // Só executa se o elemento existe
+        if (!document.getElementById('lista-recados')) return;
+        async function carregarRecados() {
+            const resp = await fetch('/api/recados');
+            const recados = await resp.json();
+            const lista = document.getElementById('lista-recados');
+            if (!lista) return;
+            lista.innerHTML = '';
+            recados.slice().reverse().forEach(r => {
+                const div = document.createElement('div');
+                div.className = 'recado';
+                div.innerHTML = `<p>${r.texto.replace(/</g, "&lt;")}</p><span class="autor">- ${r.autor.replace(/</g, "&lt;")}</span>`;
+                lista.appendChild(div);
+            });
+        }
+        const form = document.getElementById('form-recado');
+        if (form) {
+            form.onsubmit = async function (e) {
+                e.preventDefault();
+                const autor = document.getElementById('autor-recado').value.trim();
+                const texto = document.getElementById('texto-recado').value.trim();
+                if (!autor || !texto) return;
+                const resp = await fetch('/api/recados', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ autor, texto })
+                });
+                if (resp.ok) {
+                    document.getElementById('autor-recado').value = '';
+                    document.getElementById('texto-recado').value = '';
+                    carregarRecados();
+                } else {
+                    alert('Erro ao enviar recado.');
+                }
+            };
+        }
+        carregarRecados();
+    }, 0);
+</script>

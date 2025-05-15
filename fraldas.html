@@ -1,0 +1,152 @@
+<section class="fraldas-section" id="fraldas" style="max-width:800px;margin:2rem auto;width:100%;">
+    <h2 style="text-align:center;color:#A2BA8A;margin-bottom:2rem;">Escolha a fralda que você vai levar</h2>
+    <form id="form-fralda" style="display:flex;flex-wrap:wrap;gap:2rem;justify-content:center;width:100%;">
+        <!-- Huggies M -->
+        <div class="fralda-card" data-tipo="huggies-m"
+            style="background:#A2BA8A;border-radius:12px;box-shadow:0 2px 8px #B3B66F;padding:1.5rem 1rem;text-align:center;width:270px;">
+            <img src="imagens/huggies-m.png" alt="Huggies M" style="width:120px;">
+            <div style="font-weight:700;font-size:1.1rem;margin:1rem 0 0.5rem 0;color:#fff;">Huggies Supreme Care M
+            </div>
+            <div class="qtd" id="qtd-huggies-m"
+                style="color:#fff;font-weight:600;font-size:1.15rem;margin-bottom:1rem;text-shadow:0 1px 2px #8D9F6F33;">
+                Restam 20 unidades</div>
+            <input type="text" name="nome-huggies-m" placeholder="Seu nome" maxlength="30" required
+                style="width:90%;margin-bottom:0.7rem;padding:0.5rem;border-radius:6px;border:1px solid #8D9F6F;color:#907F47;">
+            <button type="button" class="btn-levar" onclick="enviarWhatsApp('huggies-m', this)"
+                style="width:100%;background:#B3B66F;color:#fff;font-weight:700;border:none;padding:0.7rem 0;border-radius:6px;cursor:pointer;">Vou
+                levar</button>
+        </div>
+        <!-- Huggies G -->
+        <div class="fralda-card" data-tipo="huggies-g"
+            style="background:#A2BA8A;border-radius:12px;box-shadow:0 2px 8px #B3B66F;padding:1.5rem 1rem;text-align:center;width:270px;">
+            <img src="imagens/huggies-g.png" alt="Huggies G" style="width:120px;">
+            <div style="font-weight:700;font-size:1.1rem;margin:1rem 0 0.5rem 0;color:#fff;">Huggies Supreme Care G
+            </div>
+            <div class="qtd" id="qtd-huggies-g"
+                style="color:#fff;font-weight:600;font-size:1.15rem;margin-bottom:1rem;text-shadow:0 1px 2px #8D9F6F33;">
+                Restam 20 unidades</div>
+            <input type="text" name="nome-huggies-g" placeholder="Seu nome" maxlength="30" required
+                style="width:90%;margin-bottom:0.7rem;padding:0.5rem;border-radius:6px;border:1px solid #8D9F6F;color:#907F47;">
+            <button type="button" class="btn-levar" onclick="enviarWhatsApp('huggies-g', this)"
+                style="width:100%;background:#B3B66F;color:#fff;font-weight:700;border:none;padding:0.7rem 0;border-radius:6px;cursor:pointer;">Vou
+                levar</button>
+        </div>
+        <!-- Pampers M -->
+        <div class="fralda-card" data-tipo="pampers-m"
+            style="background:#A2BA8A;border-radius:12px;box-shadow:0 2px 8px #B3B66F;padding:1.5rem 1rem;text-align:center;width:270px;">
+            <img src="imagens/pampers-m.png" alt="Pampers M" style="width:120px;">
+            <div style="font-weight:700;font-size:1.1rem;margin:1rem 0 0.5rem 0;color:#fff;">Pampers M</div>
+            <div class="qtd" id="qtd-pampers-m"
+                style="color:#fff;font-weight:600;font-size:1.15rem;margin-bottom:1rem;text-shadow:0 1px 2px #8D9F6F33;">
+                Restam 20 unidades</div>
+            <input type="text" name="nome-pampers-m" placeholder="Seu nome" maxlength="30" required
+                style="width:90%;margin-bottom:0.7rem;padding:0.5rem;border-radius:6px;border:1px solid #8D9F6F;color:#907F47;">
+            <button type="button" class="btn-levar" onclick="enviarWhatsApp('pampers-m', this)"
+                style="width:100%;background:#B3B66F;color:#fff;font-weight:700;border:none;padding:0.7rem 0;border-radius:6px;cursor:pointer;">Vou
+                levar</button>
+        </div>
+        <!-- Pampers G -->
+        <div class="fralda-card" data-tipo="pampers-g"
+            style="background:#A2BA8A;border-radius:12px;box-shadow:0 2px 8px #B3B66F;padding:1.5rem 1rem;text-align:center;width:270px;">
+            <img src="imagens/pampers-g.png" alt="Pampers G" style="width:120px;">
+            <div style="font-weight:700;font-size:1.1rem;margin:1rem 0 0.5rem 0;color:#fff;">Pampers G</div>
+            <div class="qtd" id="qtd-pampers-g"
+                style="color:#fff;font-weight:600;font-size:1.15rem;margin-bottom:1rem;text-shadow:0 1px 2px #8D9F6F33;">
+                Restam 20 unidades</div>
+            <input type="text" name="nome-pampers-g" placeholder="Seu nome" maxlength="30" required
+                style="width:90%;margin-bottom:0.7rem;padding:0.5rem;border-radius:6px;border:1px solid #8D9F6F;color:#907F47;">
+            <button type="button" class="btn-levar" onclick="enviarWhatsApp('pampers-g', this)"
+                style="width:100%;background:#B3B66F;color:#fff;font-weight:700;border:none;padding:0.7rem 0;border-radius:6px;cursor:pointer;">Vou
+                levar</button>
+        </div>
+    </form>
+    <div
+        style="margin:2rem auto 0 auto;max-width:600px;text-align:left;font-size:1.05rem;color:#907F47;background:#A2BA8A22;border-radius:10px;padding:1.2rem;box-shadow:0 1px 6px #B3B66F;">
+        <strong>Tratamento de dados:</strong> Ao preencher seu nome e confirmar a reserva, você autoriza o uso dos dados
+        apenas para organização do evento. Nenhuma informação será compartilhada com terceiros.
+    </div>
+    <div
+        style="margin:2rem auto 0 auto;max-width:600px;text-align:left;font-size:1.05rem;color:#907F47;background:#E5B06E22;border-radius:10px;padding:1.2rem;box-shadow:0 1px 6px #B3B66F;">
+        <strong>Estoque atualizado:</strong>
+        <ul style="margin:0.7rem 0 0 1.2rem;padding:0;">
+            <li><span id="estoque-huggies-m"></span></li>
+            <li><span id="estoque-huggies-g"></span></li>
+            <li><span id="estoque-pampers-m"></span></li>
+            <li><span id="estoque-pampers-g"></span></li>
+        </ul>
+        <span style="font-size:0.97em;color:#907F47;">A mamãe pode acompanhar aqui quais fraldas já foram reservadas e
+            quantas ainda faltam!</span>
+    </div>
+    <p class="info">
+        Selecione a fralda, preencha seu nome e clique em "Vou levar". Sua reserva será registrada automaticamente e a
+        quantidade será atualizada!
+    </p>
+</section>
+<script>
+    // filepath: c:\Users\F07614058526\Downloads\Cha de Bebe\fraldas.html
+    (function () {
+        if (typeof window.nomesFraldas === "undefined") {
+            window.nomesFraldas = {
+                'huggies-m': 'Huggies Supreme Care M',
+                'huggies-g': 'Huggies Supreme Care G',
+                'pampers-m': 'Pampers M',
+                'pampers-g': 'Pampers G'
+            };
+        }
+        if (typeof window.maxPorTipo === "undefined") {
+            window.maxPorTipo = 20;
+        } else {
+            window.maxPorTipo = 20;
+        }
+
+        async function carregarReservas() {
+            const resp = await fetch('/api/reservas');
+            const reservas = await resp.json();
+            Object.keys(nomesFraldas).forEach(tipo => {
+                const reservasTipo = reservas.filter(r => r.tipo === tipo);
+                const qtdRestante = maxPorTipo - reservasTipo.length;
+                const qtdElem = document.getElementById('qtd-' + tipo);
+                const estoqueElem = document.getElementById('estoque-' + tipo);
+                if (qtdElem) {
+                    qtdElem.textContent = `Restam ${qtdRestante} unidades`;
+                }
+                if (estoqueElem) {
+                    estoqueElem.textContent =
+                        `${nomesFraldas[tipo]}: ${qtdRestante} de ${maxPorTipo} disponíveis`;
+                }
+            });
+        }
+
+        window.enviarWhatsApp = function (tipo, btn) {
+            const input = btn.parentElement.querySelector('input[type="text"]');
+            const nome = input.value.trim();
+            if (!nome) {
+                input.focus();
+                input.style.borderColor = "#ff8da1";
+                setTimeout(() => { input.style.borderColor = "#ccc"; }, 1500);
+                return;
+            }
+            fetch('/api/reservar', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ nome, tipo })
+            }).then(async resp => {
+                if (resp.ok) {
+                    alert('Reserva confirmada! Obrigado por participar.');
+                    input.value = '';
+                    carregarReservas();
+                } else {
+                    let erro = 'Erro ao reservar.';
+                    try {
+                        const data = await resp.json();
+                        if (data && data.error) erro = data.error;
+                    } catch { }
+                    alert(erro);
+                }
+            });
+        };
+
+        // Chame sempre que o script for executado
+        carregarReservas();
+    })();
+</script>

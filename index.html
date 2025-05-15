@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Chá Revelação - Noah ou Mavi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/616/616494.png">
+</head>
+
+<body>
+    <header class="decor-header" style="display:flex;flex-direction:column;align-items:center;">
+        <div class="clouds"></div>
+        <button class="hamburger" id="hamburger-menu" aria-label="Abrir menu" aria-expanded="false"
+            aria-controls="nav-bar">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div style="display:flex;flex-direction:column;align-items:center;width:100%;">
+            <div class="main-title">Chá Revelação do(a)</div>
+            <div class="baby-names">Noah <span class="ou">ou</span> Mavie</div>
+        </div>
+    </header>
+    <nav class="nav-bar" id="nav-bar">
+        <a href="#" data-page="home.html">Home</a>
+        <a href="#" data-page="fraldas.html">Lista de Fraldas</a>
+        <a href="#" data-page="recados.html">Mural de Recados</a>
+        <a href="#" data-page="confirmar.html">Confirmar Presença</a>
+        <a href="#" data-page="evento.html">Evento</a>
+    </nav>
+    <main id="conteudo-principal" style="min-height:400px;"></main>
+    <footer>
+        <p style="color:#ffff;">Feito com carinho para Noah ou Mavie • 2025</p>
+    </footer>
+    <script>
+        async function carregarPagina(pagina) {
+            const main = document.getElementById('conteudo-principal');
+            try {
+                const resp = await fetch(pagina);
+                if (resp.ok) {
+                    main.innerHTML = await resp.text();
+                    // Executa scripts embutidos na página carregada
+                    main.querySelectorAll('script').forEach(oldScript => {
+                        const newScript = document.createElement('script');
+                        if (oldScript.src) {
+                            newScript.src = oldScript.src;
+                        } else {
+                            newScript.textContent = oldScript.textContent;
+                        }
+                        document.body.appendChild(newScript);
+                        oldScript.remove();
+                    });
+                    // Protege o menu: se sumiu, recarrega a página
+                    if (!document.getElementById('nav-bar')) {
+                        location.reload();
+                    }
+                } else {
+                    main.innerHTML = "<p style='text-align:center;color:#888;'>Conteúdo não encontrado.</p>";
+                }
+            } catch {
+                main.innerHTML = "<p style='text-align:center;color:#888;'>Erro ao carregar conteúdo.</p>";
+            }
+        }
+
+        // Hamburger menu mobile
+        const hamburger = document.getElementById('hamburger-menu');
+        const navBar = document.getElementById('nav-bar');
+        hamburger.onclick = function () {
+            navBar.classList.toggle('aberto');
+            hamburger.classList.toggle('ativo');
+            const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+            hamburger.setAttribute('aria-expanded', !expanded);
+        };
+
+        // SPA Menu
+        document.querySelectorAll('.nav-bar a').forEach(link => {
+            link.onclick = function (e) {
+                e.preventDefault();
+                carregarPagina(this.getAttribute('data-page'));
+                document.querySelectorAll('.nav-bar a').forEach(a => a.classList.remove('ativo'));
+                this.classList.add('ativo');
+                // Fecha menu só no mobile
+                if (window.innerWidth <= 600) {
+                    navBar.classList.remove('aberto');
+                    hamburger.classList.remove('ativo');
+                    hamburger.setAttribute('aria-expanded', false);
+                }
+            };
+        });
+
+        // Garante que o menu nunca suma no desktop ao redimensionar
+        window.addEventListener('resize', function () {
+            if (window.innerWidth > 600) {
+                navBar.classList.remove('aberto');
+                hamburger.classList.remove('ativo');
+                hamburger.setAttribute('aria-expanded', false);
+                navBar.style.display = 'flex';
+            } else {
+                navBar.style.display = '';
+            }
+        });
+
+        // Carrega Home por padrão
+        window.onload = () => {
+            carregarPagina('home.html');
+            document.querySelector('.nav-bar a[data-page="home.html"]').classList.add('ativo');
+            navBar.classList.remove('aberto');
+            hamburger.classList.remove('ativo');
+            hamburger.setAttribute('aria-expanded', false);
+            navBar.style.display = 'flex';
+        };
+    </script>
+</body>
+
+</html>
