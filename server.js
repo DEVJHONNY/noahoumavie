@@ -3,7 +3,7 @@ const fs = require('fs');
 const cors = require('cors');
 const path = require('path');
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const DATA_FILE = path.join(__dirname, 'reservas.json');
 const RECADOS_FILE = path.join(__dirname, 'recados.json');
 const PRESENCAS_FILE = path.join(__dirname, 'presencas.json');
@@ -137,6 +137,10 @@ app.post('/api/presencas', (req, res) => {
 
 app.get('/index', (req, res) => {
     res.redirect('/index.html');
+});
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.listen(PORT, '0.0.0.0', () => {
