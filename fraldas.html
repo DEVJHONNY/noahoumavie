@@ -5,8 +5,7 @@
         <div class="fralda-card" data-tipo="huggies-m"
             style="background:#A2BA8A;border-radius:12px;box-shadow:0 2px 8px #B3B66F;padding:1.5rem 1rem;text-align:center;width:270px;">
             <img src="imagens/huggies-m.png" alt="Huggies M" style="width:120px;">
-            <div style="font-weight:700;font-size:1.1rem;margin:1rem 0 0.5rem 0;color:#fff;">Huggies Supreme Care M
-            </div>
+            <div style="font-weight:700;font-size:1.1rem;margin:1rem 0 0.5rem 0;color:#fff;">Huggies M</div>
             <div class="qtd" id="qtd-huggies-m"
                 style="color:#fff;font-weight:600;font-size:1.15rem;margin-bottom:1rem;text-shadow:0 1px 2px #8D9F6F33;">
                 Restam 20 unidades</div>
@@ -20,8 +19,7 @@
         <div class="fralda-card" data-tipo="huggies-g"
             style="background:#A2BA8A;border-radius:12px;box-shadow:0 2px 8px #B3B66F;padding:1.5rem 1rem;text-align:center;width:270px;">
             <img src="imagens/huggies-g.png" alt="Huggies G" style="width:120px;">
-            <div style="font-weight:700;font-size:1.1rem;margin:1rem 0 0.5rem 0;color:#fff;">Huggies Supreme Care G
-            </div>
+            <div style="font-weight:700;font-size:1.1rem;margin:1rem 0 0.5rem 0;color:#fff;">Huggies G</div>
             <div class="qtd" id="qtd-huggies-g"
                 style="color:#fff;font-weight:600;font-size:1.15rem;margin-bottom:1rem;text-shadow:0 1px 2px #8D9F6F33;">
                 Restam 20 unidades</div>
@@ -74,8 +72,9 @@
             <li><span id="estoque-pampers-m"></span></li>
             <li><span id="estoque-pampers-g"></span></li>
         </ul>
-        <span style="font-size:0.97em;color:#907F47;">A mamãe pode acompanhar aqui quais fraldas já foram reservadas e
-            quantas ainda faltam!</span>
+        <span style="font-size:0.97em;color:#907F47;">
+            A mamãe e o papai podem acompanhar aqui quais fraldas já foram reservadas e quantas ainda faltam!
+        </span>
     </div>
     <p class="info">
         Selecione a fralda, preencha seu nome e clique em "Vou levar". Sua reserva será registrada automaticamente e a
@@ -87,8 +86,8 @@
     (function () {
         if (typeof window.nomesFraldas === "undefined") {
             window.nomesFraldas = {
-                'huggies-m': 'Huggies Supreme Care M',
-                'huggies-g': 'Huggies Supreme Care G',
+                'huggies-m': 'Huggies M',
+                'huggies-g': 'Huggies G',
                 'pampers-m': 'Pampers M',
                 'pampers-g': 'Pampers G'
             };
@@ -104,7 +103,7 @@
             const reservas = await resp.json();
             Object.keys(nomesFraldas).forEach(tipo => {
                 const reservasTipo = reservas.filter(r => r.tipo === tipo);
-                const qtdRestante = maxPorTipo - reservasTipo.length;
+                const qtdRestante = window.maxPorTipo - reservasTipo.length;
                 const qtdElem = document.getElementById('qtd-' + tipo);
                 const estoqueElem = document.getElementById('estoque-' + tipo);
                 if (qtdElem) {
@@ -112,7 +111,7 @@
                 }
                 if (estoqueElem) {
                     estoqueElem.textContent =
-                        `${nomesFraldas[tipo]}: ${qtdRestante} de ${maxPorTipo} disponíveis`;
+                        `${nomesFraldas[tipo]}: ${qtdRestante} de ${window.maxPorTipo} disponíveis`;
                 }
             });
         }
